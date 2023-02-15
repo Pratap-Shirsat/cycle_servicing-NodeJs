@@ -1,0 +1,2543 @@
+{
+	"info": {
+		"_postman_id": "824761f0-e595-4040-95c1-a22935f240f0",
+		"name": "Cycle Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "customer login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Vishal\",\r\n    \"password\":\"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technician login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"tomcruise\",\r\n    \"password\":\"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"superAdmin579\",\r\n    \"password\":\"seed579Password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "add admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU5OTMzNjAsImV4cCI6MTYxNjAyOTM2MH0.RK98ksfxJ-3tNo-RVDQ_wOW7xb1DVUwgpKFndocyjbQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Pratap\",\r\n    \"lastName\": \"Shirsat\",\r\n    \"mobile\": \"9767243067\",\r\n    \"instaUsername\": \"Pratap\",\r\n    \"email\": \"pratap@email.com\",\r\n    \"password\": \"password123\",\r\n    \"designation\":\"Manager\",\r\n    \"aadhaarCard\":\"5555 6666 7777 \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU4NzYyNTIsImV4cCI6MTYxNTkxMjI1Mn0.nBZx49HAo0gUIWDBnVNIFzKCKq9HVpuwVTn4uV2V63Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin by id though token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiMmVmNTcxOWYtNzA4Zi00ZmJiLWFkYWYtZjM4MzBiY2NmNTYyIiwiaWF0IjoxNjE2MDU2ODE0LCJleHAiOjE2MTYwOTI4MTR9.eoi96_5X-hRbkUgBdirC1sg6B9E-sSdhCpvKRjv3Ges",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details though token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile\":\"8329566719\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin by id though token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password for admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiNWFkZmNjZmYtYmU5Yy00ZjNjLTg4MzUtNTI2Y2QxZDUzOGRhIiwiaWF0IjoxNjE2NDg0MzA4LCJleHAiOjE2MTY1MjAzMDh9.xCp5ygopiOaek_8WNFIBdJJP2eSfZsLMsKQZFJKKryY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\" \",\r\n    \"newPassword\":\" \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/reset-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password for admin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"pshirsat@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "new Service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Chain Degreasing &Lubrication\",\r\n    \"cost\": 200,\r\n    \"duration\": \"01:00:00\",\r\n    \"place\": \"WorkStation\",\r\n    \"transportCharges\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/service/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service/bc8473f2-0a66-4064-b39e-18dddce1f2e9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								"bc8473f2-0a66-4064-b39e-18dddce1f2e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "service by place",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service?place=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service"
+							],
+							"query": [
+								{
+									"key": "place",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"duration\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/service/b4722969-bc37-4b1f-b7fd-0f8e64902f3b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								"b4722969-bc37-4b1f-b7fd-0f8e64902f3b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service/b4722969-bc37-4b1f-b7fd-0f8e64902f3b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								"b4722969-bc37-4b1f-b7fd-0f8e64902f3b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Technitions",
+			"item": [
+				{
+					"name": "new technition",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstName",
+									"value": "Tom",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Cruise",
+									"type": "text"
+								},
+								{
+									"key": "mobile",
+									"value": "8329566719",
+									"type": "text"
+								},
+								{
+									"key": "instaUsername",
+									"value": "tomcruise",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "tomcruise@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "aadhaarCardNumber",
+									"value": "6678 4456 2329",
+									"type": "text"
+								},
+								{
+									"key": "aadhaarcardproof",
+									"type": "file",
+									"src": "/C:/Users/pratap.shirsat/Pictures/nature.jpg"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/pratap.shirsat/Pictures/SampleJPGImage_200kbmb.jpg"
+								},
+								{
+									"key": "pancard",
+									"type": "file",
+									"src": "/C:/Users/pratap.shirsat/Pictures/SampleJPGImage_500kbmb.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password for technician",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiNWFkZmNjZmYtYmU5Yy00ZjNjLTg4MzUtNTI2Y2QxZDUzOGRhIiwiaWF0IjoxNjE2NDg0MzA4LCJleHAiOjE2MTY1MjAzMDh9.xCp5ygopiOaek_8WNFIBdJJP2eSfZsLMsKQZFJKKryY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"\",\r\n    \"newPassword\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/reset-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password for technician",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"p@e.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all technitions (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU4ODk0MzIsImV4cCI6MTYxNTkyNTQzMn0.ObtN-cZxoYh7vl1ZM5LK60S9ppFraAZG_h6zDnqdfmY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/technition/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all currently working technitions (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU3MjkwMjcsImV4cCI6MTYxNTc2NTAyN30.apx2ez1Fy_UknvJDjdvjytGMJJdyHsZxlMH5ZjugeZw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/technition?status=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all technitions along with appointments (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTYwNzcyMTQsImV4cCI6MTYxNjExMzIxNH0.-pMzlesuYhGE0SKVpBUk7XfN9vZHdm9_Lr27lKiJQ2Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/technition?status=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technition through bearer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjQ1NTQ3LCJleHAiOjE2MTU2ODE1NDd9.GR4AccxE8FYqYGnbLrA1oJ52EEHmh4orCUHBH8qb-Hw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/technition/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details though bearer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjQ1NTQ3LCJleHAiOjE2MTU2ODE1NDd9.GR4AccxE8FYqYGnbLrA1oJ52EEHmh4orCUHBH8qb-Hw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile\":\"8329566719\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technition by id through bearer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVEVDSE5JQ0lBTiIsInRlY2huaWNpYW5JZCI6IjRlYjUwOGM1LTVlYmUtNDQ1NC1hOGQ3LTAxNDcwNzlmZjE1YSIsImlhdCI6MTYxNTY0OTMwMywiZXhwIjoxNjE1Njg1MzAzfQ.g9ijsU_N-Mx0N3FmDZie7lksiX5bNgNAWLMTrxIFcmk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/technition/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile picture technician",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVEVDSE5JQ0lBTiIsInRlY2huaWNpYW5JZCI6IjFjOTI2Y2IyLWRmOWUtNGNlYS1iNWYzLTYzOTg5OWEwNTg2NiIsImlzU3lzdGVtR2VuZXJhdGVkIjpmYWxzZSwiaWF0IjoxNjE2NjU4NzkxLCJleHAiOjE2MTY2OTQ3OTF9.ENG7WEAKo1b8Mrip78mRubkS_rxZDtcYc26nyC2dtaQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/pratap.shirsat/Pictures/SampleJPGImage_500kbmb.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/me/update_avatar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								"me",
+								"update_avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "new customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Vishal\",\r\n    \"lastName\": \"Shirsat\",\r\n    \"mobile\": \"9767243067\",\r\n    \"instaUsername\": \"Vishal\",\r\n    \"email\": \"vishal@email.com\",\r\n    \"address\":\"Durgabhat Ponda-Goa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset customer password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiNWFkZmNjZmYtYmU5Yy00ZjNjLTg4MzUtNTI2Y2QxZDUzOGRhIiwiaWF0IjoxNjE2NDg0MzA4LCJleHAiOjE2MTY1MjAzMDh9.xCp5ygopiOaek_8WNFIBdJJP2eSfZsLMsKQZFJKKryY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"password123\",\r\n    \"newPassword\":\"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/reset-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot customer password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"pratap@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get the address proof categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/customer/address_proof_types",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"address_proof_types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer through bearer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiOTY3MjZjYTMtZmFmNi00YTMwLThiZjctMDk3MWJjMmUwNmI1IiwiaWF0IjoxNjE1ODg4NDc3LCJleHAiOjE2MTU5MjQ0Nzd9.kIlFqz6MQEjCOfX9ZVjq2WBpNldwYqHmFrw03DXzJkQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/customer/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all customers (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU5NjU5NjUsImV4cCI6MTYxNjAwMTk2NX0.2b88V2yEfqzQlNWV32J2WCgLlE2pYw_As-iJv7mWtuc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details access through customer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiOTY3MjZjYTMtZmFmNi00YTMwLThiZjctMDk3MWJjMmUwNmI1IiwiaWF0IjoxNjE1ODg4NDc3LCJleHAiOjE2MTU5MjQ0Nzd9.kIlFqz6MQEjCOfX9ZVjq2WBpNldwYqHmFrw03DXzJkQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile\":\"8329566719\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer by id through customer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiOTY3MjZjYTMtZmFmNi00YTMwLThiZjctMDk3MWJjMmUwNmI1IiwiaWF0IjoxNjE1ODg4NDc3LCJleHAiOjE2MTU5MjQ0Nzd9.kIlFqz6MQEjCOfX9ZVjq2WBpNldwYqHmFrw03DXzJkQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploading files for customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiZDM3MzMxNWItMjk2NC00NmNmLThhNzctODZlZWU1Zjk2ODk0IiwiaXNTeXN0ZW1HZW5lcmF0ZWQiOmZhbHNlLCJpYXQiOjE2MTY2NjY2OTUsImV4cCI6MTYxNjcwMjY5NX0.WQmWqeGLp3TiAXfaiAaKnK6zOM-ZA_L2LtYnMH3fyX4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/pratap.shirsat/Pictures/SampleJPGImage_200kbmb.jpg"
+								},
+								{
+									"key": "addressProof",
+									"type": "file",
+									"src": "/C:/Users/pratap.shirsat/Pictures/nature.jpg"
+								},
+								{
+									"key": "addressProofType",
+									"value": "electionCard",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete profile pic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiZDM3MzMxNWItMjk2NC00NmNmLThhNzctODZlZWU1Zjk2ODk0IiwiaXNTeXN0ZW1HZW5lcmF0ZWQiOmZhbHNlLCJpYXQiOjE2MTY2NjY2OTUsImV4cCI6MTYxNjcwMjY5NX0.WQmWqeGLp3TiAXfaiAaKnK6zOM-ZA_L2LtYnMH3fyX4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/customer/me/avatar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"me",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cycles",
+			"item": [
+				{
+					"name": "new cycle through customer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiMzJhM2Y0YjYtYmMzNy00YjFmLTk5NDAtNjljZDY5MmYzYzhlIiwiaWF0IjoxNjE1NjU1ODMwLCJleHAiOjE2MTU2OTE4MzB9.21XGq75ZONRuUoJtPkUWJwJFOuSn9K6QqWqqVxhctvI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brand\": \"Hero\",\r\n    \"model\": \"Pro\",\r\n    \"color\": \"acid green\",\r\n    \"notes\": \"None\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/cycle/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all cycles (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cycle/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cycle by customer id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiYjE5ODc0NjgtZmQ0Yi00Mjc2LThiOWEtYjQwNWQ0MmYzN2IyIiwiaWF0IjoxNjE1ODg5NjM0LCJleHAiOjE2MTU5MjU2MzR9.N4n1eiabbMpppvqaL58GLPNig96dwR3vPUoyukXNJYk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cycle/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cycles by cycle id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cycle/5b5d6e1a-2d6c-4540-8296-887cc6908f7d",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								"5b5d6e1a-2d6c-4540-8296-887cc6908f7d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details through cusomer token access",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiYjE5ODc0NjgtZmQ0Yi00Mjc2LThiOWEtYjQwNWQ0MmYzN2IyIiwiaWF0IjoxNjE1ODg4OTE5LCJleHAiOjE2MTU5MjQ5MTl9.DsPG9Tgi9jNM_2cn4mal3B1wRB9Qo8HSthsySdStU0k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\":\"green\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/cycle/7c41812e-f5fe-49d1-8366-897fefa99c99",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								"7c41812e-f5fe-49d1-8366-897fefa99c99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cycle by id through customer token access",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cycle/7c41812e-f5fe-49d1-8366-897fefa99c99",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								"7c41812e-f5fe-49d1-8366-897fefa99c99"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "new appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiZWE2NmRiYzItNTJlNS00ZDhlLTk2NzUtZjM3MmNjMzMzMzVhIiwiaWF0IjoxNjE1OTY2MzM2LCJleHAiOjE2MTYwMDIzMzZ9.5WY_rN-K77Pnt6D60d3rS_iG70iyGCs7VVp7Gx_LZnw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"onDate\": \"2021-03-20\",\r\n    \"atTime\": \"17:00:00\",\r\n    \"serviceId\": \"98ff7035-b934-444a-a4b8-fb5eb4e8d799\",\r\n    \"cycleId\": \"9943eee1-7cde-43c7-b0be-05bf6f1930de\",\r\n    \"remarks\": \"none\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find  appointment by customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiYjE5ODc0NjgtZmQ0Yi00Mjc2LThiOWEtYjQwNWQ0MmYzN2IyIiwiaWF0IjoxNjE1ODg5OTUxLCJleHAiOjE2MTU5MjU5NTF9.3yvluzRovdV6Haqp-YG5j5aUEaxtwxGT5mADKnAfwbY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment by appointment status (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU4OTA2MDEsImV4cCI6MTYxNTkyNjYwMX0.p7xBYthHgRDGDtIhdcW7k4PXP398u1cQTD7GN7lrp5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment?status=new",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "new"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment by appointment date and place (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU4OTA2MDEsImV4cCI6MTYxNTkyNjYwMX0.p7xBYthHgRDGDtIhdcW7k4PXP398u1cQTD7GN7lrp5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment?date=2021-03-23&place=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2021-03-23"
+								},
+								{
+									"key": "place",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment by appointment id (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU4OTA2MDEsImV4cCI6MTYxNTkyNjYwMX0.p7xBYthHgRDGDtIhdcW7k4PXP398u1cQTD7GN7lrp5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment?appointmentId=85e9dd54-b94b-4393-a62d-481ad32158ef",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "85e9dd54-b94b-4393-a62d-481ad32158ef"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all appointments (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU5OTMzNjAsImV4cCI6MTYxNjAyOTM2MH0.RK98ksfxJ-3tNo-RVDQ_wOW7xb1DVUwgpKFndocyjbQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all appointments assigned to the technician (Technician)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVEVDSE5JQ0lBTiIsInRlY2huaWNpYW5JZCI6IjNmNzNhOTk3LTBkZjItNDc5NC1hNGE2LWIwN2I1ODEwY2NiOSIsImlhdCI6MTYxNjA3Njk3NiwiZXhwIjoxNjE2MTEyOTc2fQ.V3h0sL9pZ7qr6yOYq-bsq3zSlKrF2-nL4gFipRjKQy0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment/tech",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"tech"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details (customer) by appointmentId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atTime\":\"12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/b4f722c3-52d2-4a04-b109-8b0c111304a0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"b4f722c3-52d2-4a04-b109-8b0c111304a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status of appointment (technician use)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\" : \"Done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/technician/b4f722c3-52d2-4a04-b109-8b0c111304a0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"technician",
+								"b4f722c3-52d2-4a04-b109-8b0c111304a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aprove details (admin) by appointment id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"technicianId\": \"6f19129e-2cc2-4b3f-8a3e-58ade943077b\",\r\n    \"status\": \"confirmed\",\r\n    \"deliveryDate\": \"2021-04-15\",\r\n    \"deliveryTime\": \"10:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/admin/07c587de-546c-4ff7-9ffd-ec8c199843e1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"admin",
+								"07c587de-546c-4ff7-9ffd-ec8c199843e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment by appointment id through customer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment/b4f722c3-52d2-4a04-b109-8b0c111304a0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"b4f722c3-52d2-4a04-b109-8b0c111304a0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "new transaction based on customer id by token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiMzJhM2Y0YjYtYmMzNy00YjFmLTk5NDAtNjljZDY5MmYzYzhlIiwiaWF0IjoxNjE1NjU1ODMwLCJleHAiOjE2MTU2OTE4MzB9.21XGq75ZONRuUoJtPkUWJwJFOuSn9K6QqWqqVxhctvI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"modeOfTransaction\":\"Cash\",\r\n   \"amountPaid\":200,\r\n   \"appointmentId\":\"d8a586cf-d76a-4411-8599-19fa6bb79db4\",\r\n   \"referenceId\":\"no details required\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transaction/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all transactions (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU4OTA2MDEsImV4cCI6MTYxNTkyNjYwMX0.p7xBYthHgRDGDtIhdcW7k4PXP398u1cQTD7GN7lrp5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction bt transactionId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction/78267096-3189-460e-9f3b-72b4cdb60d04",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								"78267096-3189-460e-9f3b-72b4cdb60d04"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction by customerId (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU4OTA2MDEsImV4cCI6MTYxNTkyNjYwMX0.p7xBYthHgRDGDtIhdcW7k4PXP398u1cQTD7GN7lrp5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction?customerId=78267096-3189-460e-9f3b-72b4cdb60d04",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "78267096-3189-460e-9f3b-72b4cdb60d04"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction by date of transaction (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU4OTA2MDEsImV4cCI6MTYxNTkyNjYwMX0.p7xBYthHgRDGDtIhdcW7k4PXP398u1cQTD7GN7lrp5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction?date=2021-03-29",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2021-03-29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiMzJhM2Y0YjYtYmMzNy00YjFmLTk5NDAtNjljZDY5MmYzYzhlIiwiaWF0IjoxNjE1NjU1ODMwLCJleHAiOjE2MTU2OTE4MzB9.21XGq75ZONRuUoJtPkUWJwJFOuSn9K6QqWqqVxhctvI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modeOfTransaction\":\"Debit Card\",\r\n    \"referenceId\":\"fcghhhuyygyy5544w4e4wees3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transaction/78267096-3189-460e-9f3b-72b4cdb60d04",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								"78267096-3189-460e-9f3b-72b4cdb60d04"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction by transaction id (default admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction/someid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								"someid"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Surveys",
+			"item": [
+				{
+					"name": "survey response",
+					"item": [
+						{
+							"name": "add survey response",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdXJ2ZXlJZCI6IjE5YzQ1MzVmLTM0ZjUtNDY1OC05ZGViLWUwNTNhZmZmMDk1NyIsImN1c3RvbWVySWQiOiIzYmU3NGVjMi1iNWUzLTQzM2YtYjhmMy1lZTY4MWNmZWQzZGUiLCJpYXQiOjE2MTcwMjU4NDUsImV4cCI6MTYxNzYzMDY0NX0.fQYf7p0HG8rrY3LD4oy1v3-W4eRXYDSMM56mPMySRCE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"feedback\": \"Was waste of my time\",\r\n    \"Answeers\": [\r\n        {\r\n            \"questionId\": \"5a698e9c-d551-467d-96cd-c21697cf20e1\",\r\n            \"choices\": [\r\n                \"0c4fed4c-159d-4616-a052-55ca52960c31\"\r\n            ]\r\n        },\r\n        {\r\n            \"questionId\": \"affd68ee-75a9-4c6c-ace1-dc1b1456c4bb\",\r\n            \"choices\": [\r\n                \"0603fa25-6824-43c3-858a-cdea11a6cca6\",\r\n                \"3e80db5c-784f-41e7-8f86-9df4a0b78ebc\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/survey/response/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"survey",
+										"response",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "find a survey response",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/survey/response/cce77f1e-c709-406c-8cf9-c5ced97e11dd",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"survey",
+										"response",
+										"cce77f1e-c709-406c-8cf9-c5ced97e11dd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all  responses of a survey",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/survey/19c4535f-34f5-4658-9deb-e053afff0957/response",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"survey",
+										"19c4535f-34f5-4658-9deb-e053afff0957",
+										"response"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove a response",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/survey/response/a3edf92e-c23c-43aa-8c06-af19ebfbc352",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"survey",
+										"response",
+										"a3edf92e-c23c-43aa-8c06-af19ebfbc352"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "add survey",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"surveyName\": \"General Survey\",\r\n    \"description\":\"To check customers choices of buying cycles\",\r\n    \"questions\": [\r\n        {\r\n            \"questionType\": \"singleChoice\",\r\n            \"statement\": \"What is Your Gender ?\",\r\n            \"required\":true,\r\n            \"options\": [\r\n                \"Male\",\r\n                \"Female\",\r\n                \"Other\"\r\n            ]\r\n        },\r\n        {\r\n            \"questionType\": \"shortAnsweer\",\r\n            \"statement\": \"What is Your Name ?\",\r\n            \"required\":false\r\n        },\r\n        {\r\n            \"questionType\": \"multipleChoice\",\r\n            \"statement\": \"Which are Your Favourite Colours ?\",\r\n            \"required\":false,\r\n            \"options\": [\r\n                \"Black\",\r\n                \"Blue\",\r\n                \"Yellow\",\r\n                \"Red\",\r\n                \"Green\",\r\n                \"Violet\"\r\n            ]\r\n        },\r\n        {\r\n            \"questionType\": \"multipleChoice\",\r\n            \"statement\": \"Which type of Cycles ypu prefer the most ?\",\r\n            \"required\":true,\r\n            \"options\": [\r\n                \"Road bikes: Roads\",\r\n                \"Mountain bikes: Off road\",\r\n                \"Hybrid/commuter bikes: A bit of everything\",\r\n                \"Cyclocross bikes: A bit of everything, but with a road bike feel\",\r\n                \"Folding bikes: Commuting, leisure or touring for the short-on-space\",\r\n                \"Electric bikes: An electric-assisted bit of everything\",\r\n                \"Touring bikes: designed for carrying loads over longer distances while remaining comfortable for the rider\",\r\n                \"Women’s bikes: All of the above, designed specifically for women\"\r\n            ] \r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find a survey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/survey/19c4535f-34f5-4658-9deb-e053afff0957",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"19c4535f-34f5-4658-9deb-e053afff0957"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "survey  question types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/survey/question_types",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"question_types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/survey/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update survey template",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"remark\":\"Will help find the global customers\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/ecec14fa-0ab4-40c7-a862-84027652b9ce",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"ecec14fa-0ab4-40c7-a862-84027652b9ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publish survey template",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isPublished\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/ecec14fa-0ab4-40c7-a862-84027652b9ce",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"ecec14fa-0ab4-40c7-a862-84027652b9ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update question",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"required\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/question/ecec14fa-0ab4-40c7-a862-84027652b9ce",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"question",
+								"ecec14fa-0ab4-40c7-a862-84027652b9ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update choice",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"choice\":\"Will help find the global customers\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/choice/ecec14fa-0ab4-40c7-a862-84027652b9ce",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"choice",
+								"ecec14fa-0ab4-40c7-a862-84027652b9ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete survey",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/survey/1e3edc10-2917-4f2e-b1cf-85612de53db5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"1e3edc10-2917-4f2e-b1cf-85612de53db5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete question",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/survey/question/9d0830c7-7531-4a61-9b46-1947e886e75c",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"question",
+								"9d0830c7-7531-4a61-9b46-1947e886e75c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete choice",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/survey/choice/1e3edc10-2917-4f2e-b1cf-85612de53db5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"choice",
+								"1e3edc10-2917-4f2e-b1cf-85612de53db5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send surveys through emails",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": 0,\r\n    \"hostLink\": \"http://localhost:3000/api/survey\",\r\n    \"onDate\":\"2021-03-31\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/19c4535f-34f5-4658-9deb-e053afff0957/send",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"19c4535f-34f5-4658-9deb-e053afff0957",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send surveys through emails INSTANTLY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": 0,\r\n    \"hostLink\": \"http://localhost:3000/api/survey\",\r\n    \"onDate\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/19c4535f-34f5-4658-9deb-e053afff0957/send",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"19c4535f-34f5-4658-9deb-e053afff0957",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add more questions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Questions\": [\r\n        {\r\n            \"questionType\": \"shortAnsweer\",\r\n            \"statement\": \"when often you use our services?\",\r\n            \"required\": false\r\n        },\r\n        {\r\n            \"questionType\": \"singleChoice\",\r\n            \"statement\": \"Are you from Goa?\",\r\n            \"required\": true,\r\n            \"options\": [\r\n                \"yes\",\r\n                \"No\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/19c4535f-34f5-4658-9deb-e053afff0957/question",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"19c4535f-34f5-4658-9deb-e053afff0957",
+								"question"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add one choice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"option\":\"trying to add choice to short answeer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/survey/question/229d09c5-ce06-43cc-bfb3-91fa47b5312a /choice",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"question",
+								"229d09c5-ce06-43cc-bfb3-91fa47b5312a ",
+								"choice"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpc1N5c3RlbUdlbmVyYXRlZCI6ZmFsc2UsImlhdCI6MTYxNzE3MDY4MSwiZXhwIjoxNjE3MjA2NjgxfQ.2bcqnONwTkvtE0gixa9gadHe7giVUo4Rwzk_30zctqA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token_customer",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiZWE0MTZiZDAtMWI2Mi00ZjhiLTgzZGUtYjVlMmE2MmVhOWMwIiwiaWF0IjoxNjE1ODExNDA4LCJleHAiOjE2MTU4NDc0MDh9.Z6S62V0LG2ILhf2b8CY1oHzgx3reYhlggcYfPyWYxSw"
+		}
+	]
+}

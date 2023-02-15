@@ -1,0 +1,3384 @@
+{
+	"info": {
+		"_postman_id": "a2383445-41ad-4cfc-b8d9-30a97f4b5fc0",
+		"name": "Cycle Services Test Cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "customer login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const Schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"token\": \"string\"\r",
+									"    },\r",
+									"    \"required\": ['token']\r",
+									"}\r",
+									"if (pm.response.code === 200) {\r",
+									"    const data = pm.response.json()\r",
+									"    pm.test('Schema is valid', function () {\r",
+									"        pm.expect(tv4.validate(data, Schema)).to.be.true;\r",
+									"    });\r",
+									"    pm.globals.set(\"token-customer\", data.token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Joanie_Pagac\",\r\n    \"password\":\"3cS5hTgZBy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer login with wrong password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const Schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"error\": \"string\"\r",
+									"    },\r",
+									"    \"required\": ['error']\r",
+									"}\r",
+									"const dataResp = pm.response.json()\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.expect(tv4.validate(dataResp, Schema)).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"pratap@email.com\",\r\n    \"password\":\"{{$randomPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technician login with wrong email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const Schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"error\": \"string\"\r",
+									"    },\r",
+									"    \"required\": ['error']\r",
+									"}\r",
+									"const dataResp = pm.response.json()\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.expect(tv4.validate(dataResp, Schema)).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"pratap@email.com\",\r\n    \"password\":\"{{$randomPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer login with wrong email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const Schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"error\": \"string\"\r",
+									"    },\r",
+									"    \"required\": ['error']\r",
+									"}\r",
+									"const dataResp = pm.response.json()\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.expect(tv4.validate(dataResp, Schema)).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"{{$randomUserName}}\",\r\n    \"password\":\"{{$randomPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer login with wrong email Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const Schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"error\": \"string\"\r",
+									"    },\r",
+									"    \"required\": ['error']\r",
+									"}\r",
+									"const dataResp = pm.response.json()\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.expect(tv4.validate(dataResp, Schema)).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"{{$randomUserName}}\",\r\n    \"password\":\"{{$randomPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technician login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const Schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"token\": \"string\"\r",
+									"    },\r",
+									"    \"required\": ['token']\r",
+									"}\r",
+									"if (pm.response.code === 200) {\r",
+									"    const data = pm.response.json()\r",
+									"    pm.test('Schema is valid', function () {\r",
+									"        pm.expect(tv4.validate(data, Schema)).to.be.true;\r",
+									"    });\r",
+									"    pm.globals.set(\"token-technician\", data.token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"tomcruise\",\r\n    \"password\":\"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const Schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"token\": \"string\"\r",
+									"    },\r",
+									"    \"required\": ['token']\r",
+									"}\r",
+									"if (pm.response.code === 200) {\r",
+									"    const data = pm.response.json()\r",
+									"    pm.test('Schema is valid', function () {\r",
+									"        pm.expect(tv4.validate(data, Schema)).to.be.true;\r",
+									"    });\r",
+									"    pm.globals.set(\"token-admin\", data.token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"superAdmin579\",\r\n    \"password\":\"seed579Password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "add admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const techSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"adminId\": { \"type\": \"string\" },\r",
+									"        \"role\": { \"type\": \"string\" },\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"designation\":\"string\",\r",
+									"        \"aadhaarCardNumber\": { \"type\": \"string\" }\r",
+									"    },\r",
+									"    \"required\": ['adminId', 'role', 'firstName', 'lastName', 'mobile', 'email', 'instaUsername','designation', 'aadhaarCardNumber']\r",
+									"}\r",
+									"pm.test(\"Has Valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData,techSchema)).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \" {{$randomLastName}}\",\r\n    \"mobile\": \"{{$randomPhoneNumber}}\",\r\n    \"instaUsername\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \" {{$randomPassword}}\",\r\n    \"designation\":\"{{$randomJobType}}\",\r\n    \"aadhaarCard\": \"{{$randomInt}}3 {{$randomInt}}5 {{$randomInt}}7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all admins",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const techSchema = {\r",
+									"    \"type\":\"array\",\r",
+									"    \"items\":[{\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"adminId\": { \"type\": \"string\" },\r",
+									"        \"role\": { \"type\": \"string\" },\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"aadhaarCardNumber\": { \"type\": \"string\" },\r",
+									"        \"designation\":{\"type\":\"string\"}\r",
+									"    },\r",
+									"    \"required\": ['adminId', 'role', 'firstName', 'lastName', 'mobile', 'email', 'instaUsername', 'aadhaarCardNumber','designation']\r",
+									"    }]\r",
+									"}\r",
+									"pm.test(\"Has Valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData,techSchema)).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const Schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"token\": \"string\"\r",
+									"    },\r",
+									"    \"required\": ['token']\r",
+									"}\r",
+									"if (pm.response.code === 200) {\r",
+									"    const data = pm.response.json()\r",
+									"    pm.test('Schema is valid', function () {\r",
+									"        pm.expect(tv4.validate(data, Schema)).to.be.true;\r",
+									"    });\r",
+									"    pm.globals.set(\"token-admin\", data.token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\":\"seed579Password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin by id though token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const techSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"adminId\": { \"type\": \"string\" },\r",
+									"        \"role\": { \"type\": \"string\" },\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"designation\":\"string\",\r",
+									"        \"aadhaarCardNumber\": { \"type\": \"string\" }\r",
+									"    },\r",
+									"    \"required\": ['adminId', 'role', 'firstName', 'lastName', 'mobile', 'email', 'instaUsername','designation', 'aadhaarCardNumber']\r",
+									"}\r",
+									"pm.test(\"Has Valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData,techSchema)).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details though token",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile\":\"8329566719\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin by id though token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token-admin}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "new Service",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"var schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"serviceId\": { \"type\": \"string\" },\r",
+									"        \"description\": { \"type\": \"string\" },\r",
+									"        \"cost\": { \"type\": \"number\" },\r",
+									"        \"duration\": { \"type\": \"string\" },\r",
+									"        \"place\": { \"type\": \"string\" },\r",
+									"        \"transportCharges\": { \"type\": \"number\" }\r",
+									"    },\r",
+									"    \"required\":['serviceId','description','cost','duration','place','transportCharges']\r",
+									"};\r",
+									"\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    const data = pm.response.json()\r",
+									"    pm.expect(tv4.validate(data, schema)).to.be.true;\r",
+									"\r",
+									"    pm.globals.set(\"current-service-id\", data.serviceId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Chain Degreasing &Lubrication\",\r\n    \"cost\": 200,\r\n    \"duration\": \"01:00:00\",\r\n    \"place\": \"WorkStation\",\r\n    \"transportCharges\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/service/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all Services",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const serviceSchema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": [{\r",
+									"        \"type\": \"object\",\r",
+									"        \"properties\": {\r",
+									"            \"serviceId\": { \"type\": \"string\" },\r",
+									"            \"description\": { \"type\": \"string\" },\r",
+									"            \"cost\": { \"type\": \"number\" },\r",
+									"            \"duration\": { \"type\": \"string\" },\r",
+									"            \"place\": { \"type\": \"string\" },\r",
+									"            \"transportCharges\": { \"type\": \"number\" }\r",
+									"        },\r",
+									"        \"required\": ['serviceId', 'description', 'cost', 'duration', 'place', 'transportCharges']\r",
+									"    }]\r",
+									"}\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The Schema is Valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, serviceSchema)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const serviceSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"serviceId\": { \"type\": \"string\" },\r",
+									"        \"description\": { \"type\": \"string\" },\r",
+									"        \"cost\": { \"type\": \"number\" },\r",
+									"        \"duration\": { \"type\": \"string\" },\r",
+									"        \"place\": { \"type\": \"string\" },\r",
+									"        \"transportCharges\": { \"type\": \"number\" }\r",
+									"    },\r",
+									"    \"required\": ['serviceId', 'description', 'cost', 'duration', 'place', 'transportCharges']\r",
+									"}\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The Schema is Valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, serviceSchema)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service/{{current-service-id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								"{{current-service-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "service by place",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const serviceSchema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": [{\r",
+									"        \"type\": \"object\",\r",
+									"        \"properties\": {\r",
+									"            \"serviceId\": { \"type\": \"string\" },\r",
+									"            \"description\": { \"type\": \"string\" },\r",
+									"            \"cost\": { \"type\": \"number\" },\r",
+									"            \"duration\": { \"type\": \"string\" },\r",
+									"            \"place\": { \"type\": \"string\" },\r",
+									"            \"transportCharges\": { \"type\": \"number\" }\r",
+									"        },\r",
+									"        \"required\": ['serviceId', 'description', 'cost', 'duration', 'place', 'transportCharges']\r",
+									"    }]\r",
+									"}\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The Schema is Valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, serviceSchema)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service?place=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service"
+							],
+							"query": [
+								{
+									"key": "place",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update with invalid details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const serviceSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"error\": { 'type': \"string\" }\r",
+									"    },\r",
+									"    \"required\": ['error']\r",
+									"}\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"The Schema is Valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, serviceSchema)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"duration\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/service/{{current-service-id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								"{{current-service-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update with valid details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const serviceSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"message\": { 'type': \"string\" }\r",
+									"    },\r",
+									"    \"required\": ['message']\r",
+									"}\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The Schema is Valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, serviceSchema)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"duration\":\"02:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/service/{{current-service-id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								"{{current-service-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service by invalid  id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const serviceSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"message\": { 'type': \"string\" }\r",
+									"    },\r",
+									"    \"required\": ['message']\r",
+									"}\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"The Schema is Valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, serviceSchema)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service/{{current-service-id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service",
+								"{{current-service-id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Technitions",
+			"item": [
+				{
+					"name": "admin acess",
+					"item": [
+						{
+							"name": "all technitions (admin)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const techSchema = {\r",
+											"    \"type\":\"array\",\r",
+											"    \"items\":[{\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"technicianId\": { \"type\": \"string\" },\r",
+											"        \"role\": { \"type\": \"string\" },\r",
+											"        \"firstName\": { \"type\": \"string\" },\r",
+											"        \"lastName\": { \"type\": \"string\" },\r",
+											"        \"mobile\": { \"type\": \"string\" },\r",
+											"        \"email\": { \"type\": \"string\" },\r",
+											"        \"instaUsername\": { \"type\": \"string\" },\r",
+											"        \"aadhaarCardNumber\": { \"type\": \"string\" }\r",
+											"    },\r",
+											"    \"required\": ['technicianId', 'role', 'firstName', 'lastName', 'mobile', 'email', 'instaUsername', 'aadhaarCardNumber']\r",
+											"    }]\r",
+											"}\r",
+											"pm.test(\"Has Valid schema\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(tv4.validate(jsonData,techSchema)).to.be.true;\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/technition/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"technition",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all currently working technitions (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU3MjkwMjcsImV4cCI6MTYxNTc2NTAyN30.apx2ez1Fy_UknvJDjdvjytGMJJdyHsZxlMH5ZjugeZw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/technition?status=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"technition"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all technitions along with appointments (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTYwNzcyMTQsImV4cCI6MTYxNjExMzIxNH0.-pMzlesuYhGE0SKVpBUk7XfN9vZHdm9_Lr27lKiJQ2Y",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/technition?status=0",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"technition"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token-admin}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "new technition",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const techSchema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"technicianId\": { \"type\": \"string\" },\r",
+									"        \"role\": { \"type\": \"string\" },\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"aadhaarCardNumber\": { \"type\": \"string\" }\r",
+									"    },\r",
+									"    \"required\": ['technicianId', 'role', 'firstName', 'lastName', 'mobile', 'email', 'instaUsername', 'aadhaarCardNumber']\r",
+									"}\r",
+									"pm.test(\"Has Valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData,techSchema)).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \" {{$randomLastName}}\",\r\n    \"mobile\": \"{{$randomPhoneNumber}}\",\r\n    \"instaUsername\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \" {{$randomPassword}}\",\r\n    \"aadhaarCardNumber\": \"{{$randomInt}}3 {{$randomInt}}5 {{$randomInt}}7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technition through bearer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjQ1NTQ3LCJleHAiOjE2MTU2ODE1NDd9.GR4AccxE8FYqYGnbLrA1oJ52EEHmh4orCUHBH8qb-Hw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/technition/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details though bearer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjQ1NTQ3LCJleHAiOjE2MTU2ODE1NDd9.GR4AccxE8FYqYGnbLrA1oJ52EEHmh4orCUHBH8qb-Hw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile\":\"8329566719\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/technition/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technition by id through bearer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVEVDSE5JQ0lBTiIsInRlY2huaWNpYW5JZCI6IjRlYjUwOGM1LTVlYmUtNDQ1NC1hOGQ3LTAxNDcwNzlmZjE1YSIsImlhdCI6MTYxNTY0OTMwMywiZXhwIjoxNjE1Njg1MzAzfQ.g9ijsU_N-Mx0N3FmDZie7lksiX5bNgNAWLMTrxIFcmk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/technition/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"technition",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token-technician}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "new customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const customerschema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"customerId\":{\"type\":\"string\"},\r",
+									"        \"role\":{\"type\":\"string\"},\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"password\": { \"type\": \"string\" },\r",
+									"        \"address\": { \"type\": \"string\" }\r",
+									"    },\r",
+									"    \"required\": [\"customerId\",\"role\",\"firstName\", \"lastName\", \"mobile\", \"instaUsername\", \"email\", \"password\", \"address\"]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, customerschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \" {{$randomLastName}}\",\r\n    \"mobile\": \"{{$randomPhoneNumber}}\",\r\n    \"instaUsername\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \" {{$randomPassword}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new customer with error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const errorSchema = {\r",
+									"    \"type\":\"object\",\r",
+									"    \"properties\":{\r",
+									"        \"error\":{\"type\":\"string\"}\r",
+									"    },\r",
+									"    \"required\":['error']\r",
+									"}\r",
+									"pm.test(\"Error response\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect()\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"some day 2\",\r\n    \"lastName\": \" {{$randomLastName}}\",\r\n    \"mobile\": \"{{$randomPhoneNumber}}\",\r\n    \"instaUsername\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \" {{$randomPassword}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new customer with spaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const customerschema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"password\": { \"type\": \"string\" },\r",
+									"        \"address\": { \"type\": \"string\" }\r",
+									"    },\r",
+									"    \"required\": [\"firstName\", \"lastName\", \"mobile\", \"instaUsername\", \"email\", \"password\", \"address\"]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, customerschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}                         \",\r\n    \"lastName\": \"                           {{$randomLastName}}\",\r\n    \"mobile\": \"                   {{$randomPhoneNumber}}                 \",\r\n    \"instaUsername\": \"                   {{$randomUserName}}\",\r\n    \"email\": \"                     {{$randomEmail}}\",\r\n    \"password\": \" {{$randomPassword}}\",\r\n    \"address\": \"              {{$randomStreetAddress}}               \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer through bearer token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const customerschema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"customerId\":{\"type\":\"string\"},\r",
+									"        \"role\":{\"type\":\"string\"},\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"password\": { \"type\": \"string\" },\r",
+									"        \"address\": { \"type\": \"string\" }\r",
+									"    },\r",
+									"    \"required\": [\"customerId\",\"role\",\"firstName\", \"lastName\", \"mobile\", \"instaUsername\", \"email\", \"password\", \"address\"]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, customerschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/customer/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all customers (admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const customerschema = {\r",
+									"    \"type\":\"array\",\r",
+									"    \"items\":[{\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"customerId\":{\"type\":\"string\"},\r",
+									"        \"role\":{\"type\":\"string\"},\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"password\": { \"type\": \"string\" },\r",
+									"        \"address\": { \"type\": \"string\" }\r",
+									"    },\r",
+									"    \"required\": [\"customerId\",\"role\",\"firstName\", \"lastName\", \"mobile\", \"instaUsername\", \"email\", \"password\", \"address\"]\r",
+									"    }]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, customerschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTU5NjU5NjUsImV4cCI6MTYxNjAwMTk2NX0.2b88V2yEfqzQlNWV32J2WCgLlE2pYw_As-iJv7mWtuc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details access through customer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiOTY3MjZjYTMtZmFmNi00YTMwLThiZjctMDk3MWJjMmUwNmI1IiwiaWF0IjoxNjE1ODg4NDc3LCJleHAiOjE2MTU5MjQ0Nzd9.kIlFqz6MQEjCOfX9ZVjq2WBpNldwYqHmFrw03DXzJkQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile\":\"8329566719\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer by id through customer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiOTY3MjZjYTMtZmFmNi00YTMwLThiZjctMDk3MWJjMmUwNmI1IiwiaWF0IjoxNjE1ODg4NDc3LCJleHAiOjE2MTU5MjQ0Nzd9.kIlFqz6MQEjCOfX9ZVjq2WBpNldwYqHmFrw03DXzJkQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiN2FjM2VkM2EtNjQ1NC00ZDIyLWI2NzMtNDVlNWQyN2IwMjlhIiwiaWF0IjoxNjE2MTY0NDc2LCJleHAiOjE2MTYyMDA0NzZ9.MQZ9LNwKdGE7-AWJKPpJGqDeVFm1I6OmWMArjD2cv48",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cycles",
+			"item": [
+				{
+					"name": "new cycle through customer token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const cycleschema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"customerId\":{\"type\":\"string\"},\r",
+									"        \"brand\":{\"type\":\"string\"},\r",
+									"        \"cycleId\": { \"type\": \"string\" },\r",
+									"        \"model\": { \"type\": \"string\" },\r",
+									"        \"color\": { \"type\": \"string\" },\r",
+									"        \"notes\": { \"type\": \"string\" },\r",
+									"           },\r",
+									"    \"required\": [\"customerId\",\"brand\", \"model\", \"color\", \"notes\", \"cycleId\"]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, cycleschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brand\": \"{{$randomWord}}\",\r\n    \"model\": \"{{$randomProductAdjective}}\",\r\n    \"color\": \"{{$randomColor}}\",\r\n    \"notes\": \"{{$randomCompanyName}}\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/cycle/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all cycles (admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const cycleschema = {\r",
+									"    \"type\":\"array\",\r",
+									"    \"items\":[{\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"customerId\":{\"type\":\"string\"},\r",
+									"        \"brand\":{\"type\":\"string\"},\r",
+									"        \"cycleId\": { \"type\": \"string\" },\r",
+									"        \"model\": { \"type\": \"string\" },\r",
+									"        \"color\": { \"type\": \"string\" },\r",
+									"        \"notes\": { \"type\": \"string\" },\r",
+									"           },\r",
+									"    \"required\": [\"customerId\",\"brand\", \"model\", \"color\", \"notes\", \"cycleId\"]\r",
+									"    }]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, cycleschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTYxNjUyNTMsImV4cCI6MTYxNjIwMTI1M30.E8O586-miuTiTgQ6pA-k9sy9oRYOcG2522KNHn1IccY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cycle/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cycle by customer id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const cycleschema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"customerId\":{\"type\":\"string\"},\r",
+									"        \"brand\":{\"type\":\"string\"},\r",
+									"        \"cycleId\": { \"type\": \"string\" },\r",
+									"        \"model\": { \"type\": \"string\" },\r",
+									"        \"color\": { \"type\": \"string\" },\r",
+									"        \"notes\": { \"type\": \"string\" },\r",
+									"           },\r",
+									"    \"required\": [\"customerId\",\"brand\", \"model\", \"color\", \"notes\", \"cycleId\"]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, cycleschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiYjE5ODc0NjgtZmQ0Yi00Mjc2LThiOWEtYjQwNWQ0MmYzN2IyIiwiaWF0IjoxNjE1ODg5NjM0LCJleHAiOjE2MTU5MjU2MzR9.N4n1eiabbMpppvqaL58GLPNig96dwR3vPUoyukXNJYk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cycle/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cycles by cycle id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const cycleschema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"customerId\":{\"type\":\"string\"},\r",
+									"        \"brand\":{\"type\":\"string\"},\r",
+									"        \"cycleId\": { \"type\": \"string\" },\r",
+									"        \"model\": { \"type\": \"string\" },\r",
+									"        \"color\": { \"type\": \"string\" },\r",
+									"        \"notes\": { \"type\": \"string\" },\r",
+									"           },\r",
+									"    \"required\": [\"customerId\",\"brand\", \"model\", \"color\", \"notes\", \"cycleId\"]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, cycleschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cycle/bdbcf813-c92f-4bc0-8b84-8485b9058737",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								"bdbcf813-c92f-4bc0-8b84-8485b9058737"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details through cusomer token access",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiN2FjM2VkM2EtNjQ1NC00ZDIyLWI2NzMtNDVlNWQyN2IwMjlhIiwiaWF0IjoxNjE2MTY1MzQyLCJleHAiOjE2MTYyMDEzNDJ9.bZhQWE3xb1NUkk854JyIkl7B20qGXrbgkhn3GvMzMIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\":\"green\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/cycle/bdbcf813-c92f-4bc0-8b84-8485b9058737",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								"bdbcf813-c92f-4bc0-8b84-8485b9058737"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cycle by id through customer token access",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cycle/7c41812e-f5fe-49d1-8366-897fefa99c99",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cycle",
+								"7c41812e-f5fe-49d1-8366-897fefa99c99"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiN2FjM2VkM2EtNjQ1NC00ZDIyLWI2NzMtNDVlNWQyN2IwMjlhIiwiaWF0IjoxNjE2MTY0MDAwLCJleHAiOjE2MTYyMDAwMDB9.jphpnP0PTus81ZPaX6F3V46caQpoyxl2ysTAepfPo4U",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "new appointment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_customer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"onDate\": \"2021-03-20\",\r\n    \"atTime\": \"17:00:00\",\r\n    \"serviceId\": \"98ff7035-b934-444a-a4b8-fb5eb4e8d799\",\r\n    \"cycleId\": \"9943eee1-7cde-43c7-b0be-05bf6f1930de\",\r\n    \"remarks\": \"none\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find  appointment by customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_customer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment by appointment status (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment?status=new",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "new"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check appointment status (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment?appointmentId=85e9dd54-b94b-4393-a62d-481ad32158ef&status=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "85e9dd54-b94b-4393-a62d-481ad32158ef"
+								},
+								{
+									"key": "status",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment by appointment date and place (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment?date=2021-03-23&place=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2021-03-23"
+								},
+								{
+									"key": "place",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment by appointment id (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment?appointmentId=85e9dd54-b94b-4393-a62d-481ad32158ef",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "85e9dd54-b94b-4393-a62d-481ad32158ef"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all appointments (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all appointments assigned to the technician (Technician)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-technician}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment/tech",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"tech"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details (customer) by appointmentId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_customer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"atTime\":\"12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/b4f722c3-52d2-4a04-b109-8b0c111304a0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"b4f722c3-52d2-4a04-b109-8b0c111304a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status of appointment (technician use)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-technician}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\" : \"Done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/technician/b4f722c3-52d2-4a04-b109-8b0c111304a0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"technician",
+								"b4f722c3-52d2-4a04-b109-8b0c111304a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aprove details (admin) by appointment id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"technicianId\": \"6f19129e-2cc2-4b3f-8a3e-58ade943077b\",\r\n    \"status\": \"confirmed\",\r\n    \"deliveryDate\": \"2021-04-15\",\r\n    \"deliveryTime\": \"10:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/admin/07c587de-546c-4ff7-9ffd-ec8c199843e1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"admin",
+								"07c587de-546c-4ff7-9ffd-ec8c199843e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment by appointment id through customer token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_customer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/appointment/b4f722c3-52d2-4a04-b109-8b0c111304a0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								"b4f722c3-52d2-4a04-b109-8b0c111304a0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "new transaction based on customer id by token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_customer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"modeOfTransaction\":\"Cash\",\r\n   \"amountPaid\":200,\r\n   \"appointmentId\":\"d8a586cf-d76a-4411-8599-19fa6bb79db4\",\r\n   \"referenceId\":\"no details required\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transaction/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all transactions (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction bt transactionId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction/78267096-3189-460e-9f3b-72b4cdb60d04",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								"78267096-3189-460e-9f3b-72b4cdb60d04"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction by customerId (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction?customerId=78267096-3189-460e-9f3b-72b4cdb60d04",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "78267096-3189-460e-9f3b-72b4cdb60d04"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction by date of transaction (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction?date=2021-03-29",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2021-03-29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update details (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modeOfTransaction\":\"Debit Card\",\r\n    \"referenceId\":\"fcghhhuyygyy5544w4e4wees3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/transaction/78267096-3189-460e-9f3b-72b4cdb60d04",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								"78267096-3189-460e-9f3b-72b4cdb60d04"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction by transaction id (default admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transaction/someid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								"someid"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "requested apis",
+			"item": [
+				{
+					"name": "for admin accessed only",
+					"item": [
+						{
+							"name": "appointment by appointment date and at workstation",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/appointment?date=2021-03-23&place=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"appointment"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2021-03-23"
+										},
+										{
+											"key": "place",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "appointment by appointment date and at doorstep",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/appointment?date=2021-03-23&place=0",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"appointment"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2021-03-23"
+										},
+										{
+											"key": "place",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check appointment status (admin)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUFJTiIsImFkbWluSWQiOiJmNDU3Njg3NS1hOWE4LTQxM2MtYTBhMS01YzhiMTc2Y2Y3ZWQiLCJpYXQiOjE2MTYzMTk3MjksImV4cCI6MTYxNjM1NTcyOX0.5WMCsenzEUijsl15HVLQlkOux6VApxmgiN-cEP0-P1s",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/appointment?appointmentId=85e9dd54-b94b-4393-a62d-481ad32158ef&status=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"appointment"
+									],
+									"query": [
+										{
+											"key": "appointmentId",
+											"value": "85e9dd54-b94b-4393-a62d-481ad32158ef"
+										},
+										{
+											"key": "status",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "aprove details (admin) by appointment id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"technicianId\": \"6f19129e-2cc2-4b3f-8a3e-58ade943077b\",\r\n    \"status\": \"confirmed\",\r\n    \"deliveryDate\": \"2021-04-15\",\r\n    \"deliveryTime\": \"10:30:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/appointment/admin/07c587de-546c-4ff7-9ffd-ec8c199843e1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"appointment",
+										"admin",
+										"07c587de-546c-4ff7-9ffd-ec8c199843e1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "aprove details (admin) by appointment id Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJhZG1pbklkIjoiNjQzY2E3NmQtODMxNi00NmZkLWJhMzktNGY1ZDZjNDQzM2UyIiwiaWF0IjoxNjE1NjUwMzU1LCJleHAiOjE2MTU2ODYzNTV9.Qz_0kIh2JQk8oK8dSblCSWKYmtzv0hzcJwwZMMUNVzg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"technicianId\": \"6f19129e-2cc2-4b3f-8a3e-58ade943077b\",\r\n    \"status\": \"confirmed\",\r\n    \"deliveryDate\": \"2021-04-15\",\r\n    \"deliveryTime\": \"10:30:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/appointment/admin/07c587de-546c-4ff7-9ffd-ec8c199843e1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"appointment",
+										"admin",
+										"07c587de-546c-4ff7-9ffd-ec8c199843e1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token-admin}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "new customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const customerschema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"customerId\":{\"type\":\"string\"},\r",
+									"        \"role\":{\"type\":\"string\"},\r",
+									"        \"firstName\": { \"type\": \"string\" },\r",
+									"        \"lastName\": { \"type\": \"string\" },\r",
+									"        \"mobile\": { \"type\": \"string\" },\r",
+									"        \"instaUsername\": { \"type\": \"string\" },\r",
+									"        \"email\": { \"type\": \"string\" },\r",
+									"        \"password\": { \"type\": \"string\" },\r",
+									"        \"address\": { \"type\": \"string\" }\r",
+									"    },\r",
+									"    \"required\": [\"customerId\",\"role\",\"firstName\", \"lastName\", \"mobile\", \"instaUsername\", \"email\", \"password\", \"address\"]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, customerschema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \" {{$randomLastName}}\",\r\n    \"mobile\": \"{{$randomPhoneNumber}}\",\r\n    \"instaUsername\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \" {{$randomPassword}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customer/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new appointment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"onDate\": \"2021-03-20\",\r\n    \"atTime\": \"17:00:00\",\r\n    \"serviceId\": \"98ff7035-b934-444a-a4b8-fb5eb4e8d799\",\r\n    \"cycleId\": \"9943eee1-7cde-43c7-b0be-05bf6f1930de\",\r\n    \"remarks\": \"none\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/appointment/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"appointment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all services at doorstep",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const serviceSchema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": [{\r",
+									"        \"type\": \"object\",\r",
+									"        \"properties\": {\r",
+									"            \"serviceId\": { \"type\": \"string\" },\r",
+									"            \"description\": { \"type\": \"string\" },\r",
+									"            \"cost\": { \"type\": \"number\" },\r",
+									"            \"duration\": { \"type\": \"string\" },\r",
+									"            \"place\": { \"type\": \"string\" },\r",
+									"            \"transportCharges\": { \"type\": \"number\" }\r",
+									"        },\r",
+									"        \"required\": [\"serviceId\", \"description\", \"cost\", \"duration\", \"place\", \"transportCharges\"]\r",
+									"    }]\r",
+									"}\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, serviceSchema)).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Check place to be at doorstep\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    jsonData.forEach(elements => { pm.expect(elements.place).to.eql(\"ATDOORSTEP\"); })\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service?place=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service"
+							],
+							"query": [
+								{
+									"key": "place",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all services at work station",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"const serviceSchema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": [{\r",
+									"        \"type\": \"object\",\r",
+									"        \"properties\": {\r",
+									"            \"serviceId\": { \"type\": \"string\" },\r",
+									"            \"description\": { \"type\": \"string\" },\r",
+									"            \"cost\": { \"type\": \"number\" },\r",
+									"            \"duration\": { \"type\": \"string\" },\r",
+									"            \"place\": { \"type\": \"string\" },\r",
+									"            \"transportCharges\": { \"type\": \"number\" }\r",
+									"        },\r",
+									"        \"required\": [\"serviceId\", \"description\", \"cost\", \"duration\", \"place\", \"transportCharges\"]\r",
+									"    }]\r",
+									"}\r",
+									"pm.test(\"Has valid schema\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(tv4.validate(jsonData, serviceSchema)).to.be.true;\r",
+									"});\r",
+									"pm.test(\"Check place to be at workstation\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    jsonData.forEach(elements => { pm.expect(elements.place).to.eql(\"WORKSTATION\"); })\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/service?place=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"service"
+							],
+							"query": [
+								{
+									"key": "place",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiMGQ3NGNjNmMtYzVmZi00ZTRmLTg5ZWYtYWU1YWFmMGIzMmRhIiwiaWF0IjoxNjE2MTQzODIwLCJleHAiOjE2MTYxNzk4MjB9.ixkVCVEjLuFKklTA_HWv141AHIEh8E7prmO2g9VIp1I",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token_customer",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQ1VTVE9NRVIiLCJjdXN0b21lcklkIjoiZWE0MTZiZDAtMWI2Mi00ZjhiLTgzZGUtYjVlMmE2MmVhOWMwIiwiaWF0IjoxNjE1ODExNDA4LCJleHAiOjE2MTU4NDc0MDh9.Z6S62V0LG2ILhf2b8CY1oHzgx3reYhlggcYfPyWYxSw"
+		}
+	]
+}
